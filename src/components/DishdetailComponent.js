@@ -1,11 +1,5 @@
 import React, { Component } from "react";
-import { 
-    Card,
-    CardImg,
-    CardText,
-    CardBody,
-    CardTitle 
-}from "reactstrap";
+import { Card, CardImg, CardText, CardBody, CardTitle } from "reactstrap";
 import { DISHES } from "../shared/dishes";
 
 class DishDetail extends Component {
@@ -23,7 +17,7 @@ class DishDetail extends Component {
                <Card>
                   <CardImg width="100%" src={dish.image} alt={dish.name} />
                   <CardBody>
-                     <CardTitle tag={"h4"}>{dish.name}</CardTitle>
+                     <CardTitle tag={"h5"}>{dish.name}</CardTitle>
                      <CardText>{dish.description}</CardText>
                   </CardBody>
                </Card>
@@ -37,12 +31,12 @@ class DishDetail extends Component {
    renderComments(comments) {
       if (comments != null) {
          const showComments = comments.map((cmt) => {
-            const options = {  month: 'short', year: 'numeric', day: 'numeric' }
+            const options = { month: "short", year: "numeric", day: "numeric" };
             return (
                <span key={cmt.id}>
                   <p>{cmt.comment}</p>
                   <p>
-                     --{cmt.author}, {new Date(cmt.date).toLocaleDateString('en-US',options)}
+                     --{cmt.author}, {new Date(cmt.date).toLocaleDateString("en-US", options)}
                   </p>
                </span>
             );
@@ -67,9 +61,11 @@ class DishDetail extends Component {
          const dishItem = this.renderDish(dish);
          const dishComment = this.renderComments(dish.comments);
          return (
-            <div className="row">
-               {dishItem}
-               {dishComment}
+            <div className="container">
+               <div className="row">
+                  {dishItem}
+                  {dishComment}
+               </div>
             </div>
          );
       }
