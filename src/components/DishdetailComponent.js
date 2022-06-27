@@ -54,6 +54,9 @@ const DishDetail = (props) => {
          <div className="container">
             <div className="row">
                <Breadcrumb>
+               <BreadcrumbItem>
+                     <Link to="/home">Home</Link>
+                  </BreadcrumbItem>
                   <BreadcrumbItem>
                      <Link to="/menu">Menu</Link>
                   </BreadcrumbItem>

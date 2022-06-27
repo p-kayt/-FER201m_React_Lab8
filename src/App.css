@@ -1,58 +1,57 @@
-.row-header{
-    margin:0px auto;
-    padding:0px auto;
+.row-header {
+   margin: 0px auto;
+   padding: 0px auto;
 }
 
 .row-content {
-    margin:0px auto;
-    padding: 50px 0px 50px 0px;
-    border-bottom: 1px ridge;
-    min-height:400px;
+   margin: 0px auto;
+   padding: 50px 0px 50px 0px;
+   border-bottom: 1px ridge;
+   min-height: 400px;
 }
 
-.footer{
-    background-color: #D1C4E9;
-    margin:0px auto;
-    padding: 20px 0px 20px 0px;
+.footer {
+   background-color: #d1c4e9;
+   margin: 0px auto;
+   padding: 20px 0px 20px 0px;
 }
 
-.jumbotron{
-    padding:70px 30px 70px 30px;
-    margin:0px auto;
-    color:floralwhite;
-    background-color: #9575CD !important;
+.jumbotron {
+   padding: 70px 30px 70px 30px;
+   margin: 0px auto;
+   color: floralwhite;
+   background-color: #9575cd !important;
 }
 
-address{
-    font-size:80%;
-    margin:0px;
-    color:#0f0f0f;
+address {
+   font-size: 80%;
+   margin: 0px;
+   color: #0f0f0f;
 }
 
 .navbar-dark {
-    background-color: #512DA8;
+   background-color: #512da8;
 }
 
+/* jumbotron due to reacstrap remove jumbotron module with bootstrap 5 */
+.container-fluid .jumbotron,
+.container .jumbotron {
+   border-radius: none;
+   padding-left: 15px;
+   padding-right: 15px;
+}
 
-/* jumbotron */
-.container-fluid .jumbotron, .container .jumbotron {
-    border-radius: 6px;
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-  
-  @media screen and (min-width: 768px)
-  {
-  .container-fluid .jumbotron, .container .jumbotron {
+@media screen and (min-width: 768px) {
+   .container-fluid .jumbotron,
+   .container .jumbotron {
       padding-left: 60px;
       padding-right: 60px;
-  }
-  }
-  
-  @media screen and (min-width: 768px)
-  {
-  .jumbotron {
+   }
+}
+
+@media screen and (min-width: 768px) {
+   .jumbotron {
       padding-bottom: 48px;
       padding-top: 48px;
-  }
-  }
+   }
+}
