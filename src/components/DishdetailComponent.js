@@ -1,8 +1,8 @@
-import React,{ Component }  from "react";
+import React, { Component } from "react";
 
-import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, Row, Col, Label } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, Button, Modal, ModalHeader, ModalBody, Row, Col, Label } from "reactstrap";
 import { Link } from "react-router-dom";
-import { Control, LocalForm, Errors } from 'react-redux-form';
+import { Control, LocalForm, Errors } from "react-redux-form";
 
 function RenderDish({ dish }) {
    if (dish != null) {
@@ -22,7 +22,7 @@ function RenderDish({ dish }) {
    }
 }
 
-function RenderComments({ comments, dishId }) {
+function RenderComments({ comments, addComment, dishId }) {
    if (comments != null) {
       const showComments = comments.map((cmt) => {
          const options = { month: "short", year: "numeric", day: "numeric" };
@@ -40,7 +40,7 @@ function RenderComments({ comments, dishId }) {
          <div className="col-12 col-md-5 m-1">
             <h3>Comments</h3>
             {showComments}
-            <CommentForm dishId={dishId}/>
+            <CommentForm dishId={dishId} addComment={addComment} />
          </div>
       );
    } else {
@@ -72,8 +72,7 @@ const DishDetail = (props) => {
             </div>
             <div className="row">
                <RenderDish dish={props.dish} />
-               <RenderComments comments={props.comments} dishId={props.dish.id}/>
-               
+               <RenderComments comments={props.comments} addComment={props.addComment} dishId={props.dish.id} />
             </div>
          </div>
       );
@@ -104,7 +103,8 @@ export class CommentForm extends Component {
 
    handleSubmit(values) {
       this.toggleModal();
-      this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
+      // this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
+      this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
    }
 
    render() {
@@ -116,15 +116,14 @@ export class CommentForm extends Component {
 
             <div className="row row-content">
                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-                  <ModalHeader toggle={this.toggleModal}>
-                     Submit comment
-                     
-                  </ModalHeader>
+                  <ModalHeader toggle={this.toggleModal}>Submit comment</ModalHeader>
                   <ModalBody>
                      <div className="col">
                         <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
                            <Row className="form-group col-12">
-                              <Label htmlFor="rating" className="col-12">Rating</Label>
+                              <Label htmlFor="rating" className="col-12">
+                                 Rating
+                              </Label>
                               <Col className="col-12">
                                  <Control.select model=".rating" name="rating" className="form-control col-12">
                                     <option>1</option>
